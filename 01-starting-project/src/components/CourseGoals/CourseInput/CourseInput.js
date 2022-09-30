@@ -8,6 +8,10 @@ const CourseInput = (props) => {
   const [isValid, setIsValid] = useState(true);
 
   const goalInputChangeHandler = (event) => {
+    if(event.target.value.trim().length >0 )
+    { 
+      setIsValid(true);  //글자를 다시 친다면 true가 되어 리셋하는 과정
+    }
     setEnteredValue(event.target.value);
   };
 
@@ -29,7 +33,10 @@ const CourseInput = (props) => {
         <input
           type="text"
           onChange={goalInputChangeHandler}
-          style={{ borderColor: !isValid ? 'red' : 'black', backgroundColor: !isValid ? 'salmon': 'transparent' }}
+          style={{
+            borderColor: !isValid ? 'red' : '#ccc',
+            backgroundColor: !isValid ? 'salmon' : 'transparent',
+          }}
         />
       </div>
       <Button type="submit">Add Goal</Button>
