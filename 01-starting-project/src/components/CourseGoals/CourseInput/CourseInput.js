@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Button from '../../UI/Button/Button';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import './CourseInput.css';
 
 const FormControl = styled.div`
@@ -13,26 +13,24 @@ const FormControl = styled.div`
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
+  color : ${(props) => (props.isValid ? 'red' : 'black')}
 }
 
 & input {
   display: block;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid ${(props) => (props.isValid ? 'red' : '#ccc')};
+  background: ${(props) => (props.isValid ? 'salmon' : 'transparent')};
   font: inherit;
   line-height: 1.5rem;
   padding: 0 0.25rem;
+
 }
 
 & input:focus {
   outline: none;
   background: #fad0ec;
   border-color: #8b005d;
-}
-
-&.inValid input{
-  boader-color : 'red';
-  background-color: salmon;
 }
 
 &.inValid label{
@@ -63,8 +61,8 @@ const CourseInput = (props) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl className={!isValid && 'inValid'} >
-               {/* `` 사이는 문자열로 취급 */}
+      <FormControl isValid={!isValid}>
+        {/* `` 사이는 문자열로 취급 */}
         <label>Course Goal</label>
         <input type="text" onChange={goalInputChangeHandler} />
       </FormControl>
