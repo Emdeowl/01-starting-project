@@ -27,8 +27,9 @@ const CourseInput = (props) => {
   return (
     <form onSubmit={formSubmitHandler}>
       <div className={`form-control ${!isValid ? 'invalid' : ''}`}>
+               {/* `` 사이는 문자열로 취급 */}
         <label>Course Goal</label>
-        {/* 동적 스타일링  */}
+ 
         <input type="text" onChange={goalInputChangeHandler} />
       </div>
       <Button type="submit">Add Goal</Button>
